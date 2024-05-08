@@ -87,5 +87,3 @@ fig.update_layout(
     height=700
 )
 st.plotly_chart(fig)
-
-st.markdown("## Chart:")
