@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
-df = pd.read_csv("actor_participate.csv")
+df = pd.read_csv("db/actor_participate.csv")
 
 st.markdown("## Data Frame Used")
 st.text("Data Frame 1:")
@@ -12,7 +12,7 @@ st.write(
     ])
 )
 
-df2 = pd.read_csv("rating_film.csv")
+df2 = pd.read_csv("db/rating_film.csv")
 
 st.text("Data Frame 2:")
 st.write(
@@ -22,7 +22,7 @@ st.write(
 )
 
 
-df3 = pd.read_csv("genre_count.csv")
+df3 = pd.read_csv("db/genre_count.csv")
 
 st.text("Data Frame 3:")
 st.write(
