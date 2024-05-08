@@ -3,13 +3,11 @@ import psycopg2
 import pandas as pd
 import plotly.graph_objects as go
 
-@st.cache_resource
 def init_connection():
     return psycopg2.connect(**st.secrets['postgres'])
 
 conn = init_connection()
 
-@st.cache_data(ttl=100)
 def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
@@ -94,7 +92,8 @@ st.plotly_chart(fig)
 fig = go.Figure(go.Pie(
     labels=df2['rating'],
     values=df2['count'],
-    textinfo='label+percent+value'
+    textinfo='label+percent+value',
+    marker=dict(colors=['#FFA07A', '#87CEEB', '#98FB98', '#FFD700', '#FF69B4'])
 ))
 # fig.update_traces(textposition='inside', textinfo='percent+label') #put annotations
 fig.update_layout(
@@ -103,6 +102,7 @@ fig.update_layout(
     height=500
 )
 st.plotly_chart(fig)
+
 
 df3 = df3['category_name'].value_counts().reset_index().sort_values('count')
 # df_reversed = df3[::-1]
@@ -124,4 +124,4 @@ fig.update_layout(
 )
 st.plotly_chart(fig)
 
-
+st.markdown("## Chart:")
