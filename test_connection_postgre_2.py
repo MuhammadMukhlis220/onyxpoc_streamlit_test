@@ -23,6 +23,7 @@ st.write(
 
 
 df3 = pd.read_csv("db/genre_count.csv")
+df3.columns = ['title', 'category_name']
 
 st.text("Data Frame 3:")
 st.write(
@@ -68,7 +69,6 @@ st.plotly_chart(fig)
 
 
 df3 = df3['category_name'].value_counts().reset_index().sort_values('count')
-df3.columns = ['title', 'category_name']
 # df_reversed = df3[::-1]
 fig = go.Figure(go.Bar(
     x=df3['count'],
