@@ -87,6 +87,8 @@ fig.update_layout(
 )
 st.plotly_chart(fig)
 
+fig.write_image("bar_chart.png")
+
 
 
 fig = go.Figure(go.Pie(
@@ -102,6 +104,8 @@ fig.update_layout(
     height=500
 )
 st.plotly_chart(fig)
+
+fig.write_image("pie_chart.png", format = "png")
 
 
 df3 = df3['category_name'].value_counts().reset_index().sort_values('count')
@@ -124,4 +128,4 @@ fig.update_layout(
 )
 st.plotly_chart(fig)
 
-st.markdown("## Chart:")
+fig.write_image("horizontal_bar_chart.png")
